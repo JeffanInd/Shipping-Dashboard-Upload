@@ -635,8 +635,8 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const fields = [
-        {key: 'Shipper', label: 'Shipper'}, {key: 'SO', label: 'SO'}, {key: 'Vendor', label: 'Vendor'}, {key: 'PO', label: 'PO'},
-        {key: 'Container Number', label: 'Container Number'}, {key: 'ECRD', label: 'ECRD', editable: true, type: 'date'},
+        {key: 'Shipper', label: 'Shipper', editable: true, type: 'text'}, {key: 'SO', label: 'SO', editable: true, type: 'text'}, {key: 'Vendor', label: 'Vendor'}, {key: 'PO', label: 'PO'},
+        {key: 'Container Number', label: 'Container Number', editable: true, type: 'text'}, {key: 'ECRD', label: 'ECRD', editable: true, type: 'date'},
         {key: 'ETD', label: 'ETD', editable: true, type: 'date'}, {key: 'ETA', label: 'ETA', editable: true, type: 'date'},
         {key: 'Payment Status', label: 'Payment Status', editable: true, type: 'text'}, {key: 'Payment Date', label: 'Payment Date', editable: true, type: 'date'}
       ];
@@ -732,7 +732,7 @@
           }
           const type = f.type === 'date' ? 'date' : 'text';
           const inputValue = f.type === 'date' ? dateForInput(val) : val;
-          const placeholder = f.type === 'date' ? 'Pilih tanggal' : 'Ketik untuk mengubah';
+          const placeholder = f.type === 'date' ? 'Pilih tanggal' : '-';
           return `<td class="editable"><input type="${type}" data-field="${esc(f.key)}" value="${esc(inputValue)}" placeholder="${placeholder}" aria-label="${esc(f.key)} untuk ${esc(record.data.SO || 'data')}" autocomplete="off"></td>`;
         }).join('')}<td class="action-cell"><button type="button" class="btn btn-delete" data-delete="${esc(record.id)}">🗑 Delete</button></td></tr>`).join('');
       }
